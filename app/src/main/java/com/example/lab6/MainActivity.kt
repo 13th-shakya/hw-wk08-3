@@ -41,32 +41,26 @@ class MainActivity : AppCompatActivity() {
             AlertDialog.Builder(this)
                 .setTitle("按鈕式 AlertDialog")
                 .setMessage("AlertDialog 內容")
-                .setNeutralButton("左按鈕") { dialogInterface, which ->
-                    showToast("左按鈕")
-                }.setNegativeButton("中按鈕") { dialogInterface, which ->
-                    showToast("中按鈕")
-                }.setPositiveButton("右按鈕") { dialogInterface, which ->
-                    showToast("右按鈕")
-                }.show()
+                .setNeutralButton("左按鈕") { _, _ -> showToast("左按鈕") }
+                .setNegativeButton("中按鈕") { _, _ -> showToast("中按鈕") }
+                .setPositiveButton("右按鈕") { _, _ -> showToast("右按鈕") }
+                .show()
         }
 
         binding.btnDialog2.setOnClickListener {
             AlertDialog.Builder(this)
                 .setTitle("列表式 AlertDialog")
-                .setItems(item) { dialogInterface, i ->
-                    showToast("你選的是${item[i]}")
-                }.show()
+                .setItems(item) { _, i -> showToast("你選的是${item[i]}") }
+                .show()
         }
 
         binding.btnDialog3.setOnClickListener {
             var position = 0
             AlertDialog.Builder(this)
                 .setTitle("單選式 AlertDialog")
-                .setSingleChoiceItems(item, 0) { dialogInterface, i ->
-                    position = i
-                }.setPositiveButton("確定") { dialog, which ->
-                    showToast("你選的是${item[position]}")
-                }.show()
+                .setSingleChoiceItems(item, 0) { _, i -> position = i }
+                .setPositiveButton("確定") { _, _ -> showToast("你選的是${item[position]}") }
+                .show()
         }
     }
 
